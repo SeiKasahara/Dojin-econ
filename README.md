@@ -1,2 +1,25 @@
-# Dojin-econ
-Dojin Economic Research
+
+
+# Dojin-econ 同人经济学实证研究
+
+问卷链接：[同人经济学实证研究](https://wj.qq.com/s2/25896834/7619/)
+
+近年来，随着大环境变化，大家“吃粮”和消费的方式发生了很多有趣的改变。为了更好地了解当前同好们的真实偏好、日常阅读/购买习惯以及整个同人交换市场的生态现状，我们特别制作了这份小问卷。问卷仅供研究，不做任何营利性用途，报告开源，随时可以查阅引用。
+本问卷完全匿名，绝对不会收集您的账号、ID或任何可识别的个人信息。所有涉及“预算/花费”的选项仅用于宏观群体的趋势统计，请您完全放下顾虑，根据自己最真实的日常情况作答即可。
+感谢您的支持与参与！祝您喜欢的CP百年好合，推的角色永远发光，绝赞好谷次次都能原价收到！
+
+问卷作者联系方式 [munzpatrick8@gmail.com](mailto:munzpatrick8@gmail.com)
+
+---
+
+# 同人经济学理论研究系列博客
+
+[同人市场分析(5) ——企业家精神与生成式AI](https://seikasahara.com/zh/posts/lksj/)
+
+[同人市场分析(4) ——网络演化与跨国竞争](https://seikasahara.com/zh/posts/pk45/)
+
+[同人市场分析(3) ——官方与同人的双边市场](https://seikasahara.com/zh/posts/hsls/)
+
+[同人市场分析(2)——声誉与无标度的同人社区](https://seikasahara.com/zh/posts/posp/)
+
+[同人市场分析(1) ——新古典模型](https://zhuanlan.zhihu.com/p/1973558038930670008)

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>同人市场结构实证研究</title>
+  <meta name="description" content="基于计量经济学方法的同人制品消费行为实证分析报告">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="wrap" style="position:relative;z-index:1">
+    <p class="label" style="color:rgba(255,255,255,.45);margin-bottom:.75rem;">EMPIRICAL RESEARCH REPORT</p>
+    <h1>同人市场结构实证研究</h1>
+    <p class="subtitle">基于 <strong id="heroN">—</strong> 份有效问卷的计量分析&nbsp;·&nbsp;仅收录经多重比较校正、加权稳健性检验、多方法交叉验证后仍然成立的结论</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-big" id="heroSample">—</div>
+        <div class="stat-unit">有效样本</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-big" id="heroCreators">—</div>
+        <div class="stat-unit">创作者</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-big" id="heroSellers">—</div>
+        <div class="stat-unit">有售卖经验</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-big">10</div>
+        <div class="stat-unit">高置信度发现</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STICKY NAV
+     ═══════════════════════════════════════════════════════════ -->
+<nav class="topnav" id="topnav">
+  <div class="topnav-inner">
+    <a href="#sample">样本</a>
+    <a href="#f1">性别偏好</a>
+    <a href="#f2">收入弹性</a>
+    <a href="#f3">盲定意愿</a>
+    <a href="#f4">信息&gt;声誉</a>
+    <a href="#f5">性别分化</a>
+    <a href="#f678">消费心理</a>
+    <a href="#f9">非商业化</a>
+    <a href="#f10">创作韧性</a>
+    <a href="#null-results">零结果</a>
+    <a href="#robust">稳健性</a>
+    <a href="#limits">局限</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     GLOSSARY
+     ═══════════════════════════════════════════════════════════ -->
+<section id="glossary" style="padding:3rem 0 2rem">
+  <div class="wrap">
+    <h2 class="reveal">阅读本报告前，先了解这几个概念</h2>
+    <p class="text-muted mt-1 mb-3 reveal">本报告中反复出现以下术语。这里不同于日常用语，它们有特定含义。</p>
+    <div class="grid-3 reveal">
+      <div class="card" style="border-top:3px solid var(--c-accent)">
+        <h3>A 类制品（内容向）</h3>
+        <p class="text-sm text-muted mt-1">以叙事、视听体验为主的大体量同人产物。包括：<strong>同人本</strong>（小说/漫画）、创意绘本、设定集、高质量约稿、同人游戏、付费连载、同人音乐专辑等。</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--c-yellow)">
+        <h3>B 类制品（周边向）</h3>
+        <p class="text-sm text-muted mt-1">以单图展示为主的轻量化产物。包括：<strong>吧唧</strong>（徽章）、亚克力立牌、流沙麻将、镭射票、透卡等。</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--c-green)">
+        <h3>盲定</h3>
+        <p class="text-sm text-muted mt-1">在没有看到实物成品的情况下，仅凭对创作者的信任提前付款预购。类似闭眼入。</p>
+      </div>
+    </div>
+
+    <button class="expand-toggle mt-3" data-target="glossary-stats">报告中的统计术语速查 <span class="arrow">▼</span></button>
+    <div class="expand-body" id="glossary-stats">
+      <div class="card mt-2">
+        <table class="data-table">
+          <thead><tr><th>术语</th><th>通俗解释</th></tr></thead>
+          <tbody>
+            <tr><td><strong>p 值</strong></td><td>结果纯属巧合的概率。p &lt; 0.05 通常认为不太可能是巧合，即结果可信。p 越小越可信。</td></tr>
+            <tr><td><strong>效应量 (Cohen's d)</strong></td><td>效果大不大的标尺。|d| ≈ 0.2 是小效应，≈ 0.5 是中等效应，≈ 0.8 是大效应。</td></tr>
+            <tr><td><strong>OR（比值比）</strong></td><td>可能性是……的几倍。OR = 2.7 意味着 A 群体发生某事的几率是 B 群体的 2.7 倍。</td></tr>
+            <tr><td><strong>收入弹性</strong></td><td>收入变化 1% 时，消费变化多少 %。&gt;1 = 奢侈品（收入越高，购买越多），&lt;1 = 必需品（不管收入怎么变都差不多买那么多）。</td></tr>
+            <tr><td><strong>MPC（边际消费倾向）</strong></td><td>多拿到 100 块钱，其中花多少在某类商品上。MPC = 0.72 意味着多出来的钱里 72% 花在了这类商品上。</td></tr>
+            <tr><td><strong>95% 置信区间 (CI)</strong></td><td>真实值大概率落在这个范围内。区间越窄，估计越精确。</td></tr>
+            <tr><td><strong>稳健 (ROBUST)</strong></td><td>换一种统计方法重新算，结论没变。说明结果不是某个特定方法算出来的幻觉。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SAMPLE OVERVIEW
+     ═══════════════════════════════════════════════════════════ -->
+<section id="sample">
+  <div class="wrap">
+    <h2 class="reveal">样本概况</h2>
+    <p class="text-sm mt-1 mb-3 reveal" style="max-width:none">本次调查面向同人制品的消费者和创作者，收集了关于消费习惯、预算分配、创作动机等多方面的匿名数据。由于当前样本量为中小，部分结论可能不完全适用——请带着这个前提阅读。</p>
+
+    <div class="grid-3 reveal">
+      <div class="card">
+        <div class="card-title">年龄分布</div>
+        <div class="chart-box h-200"><canvas id="chartAge"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">性别分布</div>
+        <div class="chart-box h-200"><canvas id="chartGender"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">月可支配休闲资金</div>
+        <div class="chart-box h-200"><canvas id="chartIncome"></canvas></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FINDING 1 — 性别 → A/B 偏好
+     ═══════════════════════════════════════════════════════════ -->
+<section id="f1">
+  <div class="wrap">
+    <div class="finding-hdr reveal">
+      <div class="finding-num">1</div>
+      <div>
+        <h2>性别是 A/B 消费偏好的最稳健预测变量</h2>
+        <p>女性偏好 B 类（周边向）消费的几率是男性的 <span class="inline-stat">2.7×</span></p>
+      </div>
+    </div>
+
+    <p class="text-sm mt-2 mb-3 reveal" style="max-width:none">在买本子还是买谷子这个问题上，性别是真正有影响的因素。女性更倾向于买谷子（B 类），男性更倾向于买本子（A 类）。我们测试了收入高低、年龄大小、空闲时间多少，这些因素对 A/B 偏好统统没有显著影响。下面左图展示了模型预测的男女各自落入每个消费类型的概率；右图展示了女性身份本身带来的概率增减幅度（正值 = 比男性更可能，负值 = 比男性更不可能）。</p>
+
+    <div class="grid-2 reveal">
+      <div class="card">
+        <div class="card-title">预测概率剖面（控制其他变量在均值）</div>
+        <div class="chart-box h-300"><canvas id="chartF1Pred"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">平均边际效应 (AME)：女性 vs 男性</div>
+        <div class="chart-box h-300"><canvas id="chartF1Ame"></canvas></div>
+        <p class="text-sm text-muted mt-2">误差线为 Bootstrap 95% 置信区间</p>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <strong>结论：</strong>这个结论用了五种完全不同的统计方法反复验证，结果完全一致。
+    </div>
+
+    <button class="expand-toggle" data-target="f1-detail">统计证据详情 <span class="arrow">▼</span></button>
+    <div class="expand-body" id="f1-detail">
+      <table class="data-table mt-2">
+        <thead><tr><th>方法</th><th>系数 / 效应量</th><th>p 值</th><th>稳健性</th></tr></thead>
+        <tbody>
+          <tr><td>Ordered Logit</td><td>OR = 2.703</td><td class="sig">0.001</td><td>—</td></tr>
+          <tr><td>OLS</td><td>β = +0.73</td><td class="sig">0.0004</td><td>—</td></tr>
+          <tr><td>WLS（加权）</td><td>β = +0.59</td><td class="sig">0.004</td><td>✓ 稳健</td></tr>
+          <tr><td>聚类验证 (K-W)</td><td>H = 37.49</td><td class="sig">&lt; 0.0001</td><td>✓</td></tr>
+          <tr><td>分位数回归 τ=0.25</td><td>β = +0.86</td><td class="sig">0.002</td><td>✓</td></tr>
+          <tr><td>分位数回归 τ=0.75</td><td>β = +1.00</td><td class="sig">0.015</td><td>✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FINDING 2 — 收入弹性
+     ═══════════════════════════════════════════════════════════ -->
+<section id="f2">
+  <div class="wrap">
+    <div class="finding-hdr reveal">
+      <div class="finding-num">2</div>
+      <div>
+        <h2>A 类制品具有奢侈品属性，B 类制品具有必需品属性</h2>
+        <p>A 类收入弹性 <span class="inline-stat" id="f2ElasA">—</span>&nbsp; B 类收入弹性 <span class="inline-stat" id="f2ElasB">—</span></p>
+      </div>
+    </div>
+
+    <p class="text-sm mt-2 mb-3 reveal" style="max-width:none">经济学用收入弹性衡量一个商品像不像奢侈品：弹性 &gt; 1 意味着收入涨一点，花在这上面的钱涨更多，这是奢侈品的典型特征（比如名表、旅游）；弹性 &lt; 1 则意味着不管收入怎么变，都差不多要买那么多，这类似于必需品的特征（比如大米、纸巾）。数据显示：同人本（A 类）的弹性约 1.06，接近奢侈品；谷子（B 类）约 0.92，更像必需品。</p>
+
+    <div class="grid-2 reveal">
+      <div class="card">
+        <div class="card-title">A 类消费份额随收入递增</div>
+        <div class="chart-box h-260"><canvas id="chartF2Share"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">边际消费倾向 (MPC) 分配</div>
+        <div class="chart-box h-260"><canvas id="chartF2Mpc"></canvas></div>
+      </div>
+    </div>
+
+    <div class="grid-2 mt-3 reveal">
+      <div class="card">
+        <div class="card-title">预算收缩时的行为 (Q11)</div>
+        <div class="chart-box h-260"><canvas id="chartF2Budget"></canvas></div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center">
+        <p class="text-sm" style="max-width:none">
+          <strong>关键洞察：</strong>当现实开销增加时，50.5% 全面缩减，27.1% 砍 B 保 A，仅 <strong class="text-accent">4.2%</strong> 砍 A 买 B。
+        </p>
+        <p class="text-sm text-muted mt-2" style="max-width:none">
+          如果 B 类是 A 类的劣等替代品，应观察到大量"砍 A 买 B"行为，但实际比例极低。两者更接近独立商品或弱互补品。
+        </p>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <strong>结论：</strong>只有 4.2% 的人会在手紧时放弃本子去买谷子，也就是说，B 类不是 A 类的廉价替代品，两者偏向各管各的独立需求。
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FINDING 3 — 收入 → 盲定意愿
+     ═══════════════════════════════════════════════════════════ -->
+<section id="f3">
+  <div class="wrap">
+    <div class="finding-hdr reveal">
+      <div class="finding-num">3</div>
+      <div>
+        <h2>收入显著正向预测盲定意愿</h2>
+        <p>收入每升一档，P(毫不犹豫盲定) 增加 <span class="inline-stat">+8.3pp</span></p>
+      </div>
+    </div>
+
+    <p class="text-sm mt-2 mb-3 reveal" style="max-width:none">问卷原问题：你平时非常信任的一位老师发了新的制品预告，但这次是完全盲定，没有打样、没有试阅，只有出于之前的信任，你会买吗？</p>
+
+    <div class="card reveal">
+      <div class="card-title">盲定意愿预测概率（按收入档）</div>
+      <div class="chart-box h-350"><canvas id="chartF3Blind"></canvas></div>
+    </div>
+
+    <div class="callout reveal">
+      <strong>结论：</strong>月可支配资金 ≥5000 元的群体中，有 63.5% 会"毫不犹豫直接买"；而 ≤300 元的群体中只有 21.0%。四种统计方法都得出了相同结论（全部 p &lt; 0.01）。
+    </div>
+
+    <button class="expand-toggle" data-target="f3-detail">统计证据详情 <span class="arrow">▼</span></button>
+    <div class="expand-body" id="f3-detail">
+      <table class="data-table mt-2">
+        <thead><tr><th>方法</th><th>系数</th><th>p 值</th></tr></thead>
+        <tbody>
+          <tr><td>Ordered Logit</td><td>OR = 1.455</td><td class="sig">0.002</td></tr>
+          <tr><td>OLS</td><td>β = +0.112</td><td class="sig">0.005</td></tr>
+          <tr><td>WLS（加权）</td><td>β = +0.134</td><td class="sig">0.001</td></tr>
+          <tr><td>SEM 路径</td><td>β = +0.106</td><td class="sig">0.004</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FINDING 4 — 信息 > 声誉
+     ═══════════════════════════════════════════════════════════ -->
+<section id="f4">
+  <div class="wrap">
+    <div class="finding-hdr reveal">
+      <div class="finding-num">4</div>
+      <div>
+        <h2>信息完备性压倒性地胜过创作者声誉</h2>
+        <p>消费者将声誉视为信息的代理变量，而非独立偏好锚点，并且声誉偏向为信息的劣等替代品</p>
+      </div>
+    </div>
+
+    <p class="text-sm mt-2 mb-3 reveal" style="max-width:none">问卷给出了两个选项让受访者二选一：一边是知名大佬开的预售，但只有极其草率的草图；另一边是毫无名气的新人开的预售，但给出了非常详细的打样返图和全本试阅。</p>
+
+    <div class="grid-2 reveal">
+      <div class="card text-center" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div class="label mb-2">选择"无名新人 + 详细打样"的比例</div>
+        <div class="stat-big text-accent" id="f4InfoPct">—%</div>
+        <p class="text-sm text-muted mt-2">vs <span id="f4RepPct">—</span>% 选择"知名大佬 + 草率草图"</p>
+      </div>
+      <div class="card">
+        <div class="card-title">按盲定意愿分组的信息偏好率</div>
+        <div class="chart-box h-260"><canvas id="chartF4ByBlind"></canvas></div>
+        <p class="text-sm text-muted mt-1">Spearman r = 0.020, p = 0.786 — 与盲定意愿完全正交</p>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <strong>对创作者的启示：</strong>不管是大佬还是新人，提供充分的产品信息永远比积累粉丝更有效。名气只是质量信号的一种代理。因此如果能直接给出质量证据，名气的作用就基本消失了。
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FINDING 5 — 性别 × 收入冲击
+     ═══════════════════════════════════════════════════════════ -->
+<section id="f5">
+  <div class="wrap">
+    <div class="finding-hdr reveal">
+      <div class="finding-num">5</div>
+      <div>
+        <h2>正向收入冲击的性别分化——男性集中消费，女性分散配置</h2>
+        <p> <span class="inline-stat">χ²(3) = 18.86</span>, <span class="inline-stat">p = 0.0003</span>, <span class="inline-stat">Cramer's V = 0.313</span></p>
+      </div>
+    </div>
+
+    <p class="text-sm mt-2 mb-3 reveal" style="max-width:none">问卷设置了一个场景：你平时每月只有 50 元同人预算（只够买点谷子），突然多了 500 元。你会怎么花？</p>
+
+    <div class="card reveal">
+      <div class="card-title">额外预算到手后的消费选择</div>
+      <div class="chart-box h-300"><canvas id="chartF5Shock"></canvas></div>
+    </div>
+
+    <div class="callout reveal">
+      <strong>结论：</strong>约一半男性将全部投入 A 类内容，而女性更倾向于 A/B 分散配置。中等效应量，加权后稳健。
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FINDINGS 6-8 — 消费心理量表
+     ═══════════════════════════════════════════════════════════ -->
+<section id="f678">
+  <div class="wrap">
+    <div class="finding-hdr reveal">
+      <div class="finding-num" style="background:#64748b">6–8</div>
+      <div>
+        <h2>消费心理：三个独立维度</h2>
+        <p>11 级量表（0-10），参考值为中性点 5。Cronbach's α = 0.485 → 非单一构念</p>
+      </div>
+    </div>
+
+    <p class="text-sm mt-2 mb-3 reveal" style="max-width:none">问卷用 0-10 的打分题（5 分为中性点）测量了三种常见的消费心理假设。条形越偏右表示均值越高（越认同），中间的竖线标记中性点 5。均值显著高于 5 说明大家普遍认同这个说法；显著低于 5 说明大家普遍不认同。这三道题的内部一致性很低（α = 0.485），说明它们测量的是三种独立的心理维度，不能混为一谈。</p>
+
+    <div class="card reveal">
+      <div id="gaugeContainer">
+        <!-- Gauges rendered by JS -->
+      </div>
+    </div>
+
+    <div class="callout reveal" style="margin-top:1.5rem">
+      <strong>发现 6（均值 6.31，高于中性点）：</strong>买了一本喜欢老师的同人本后，很可能顺手把老师出的配套谷子也买了。<br>
+      <strong>发现 7（均值 3.67，低于中性点）：</strong>同人消费者不跟风，社区里大家都在晒某个制品并不能让你掏钱买一个自己觉得一般的制品。<br>
+      <strong>发现 8（均值 4.27，低于中性点）：</strong>因为太忙所以改买谷子吃粮这个说法不成立。忙不忙和买本子还是买谷子没有关系。
+    </div>
+
+    <button class="expand-toggle" data-target="f678-detail">Q14 × 闲暇时间交叉验证 <span class="arrow">▼</span></button>
+    <div class="expand-body" id="f678-detail">
+      <div class="card mt-2">
+        <div class="card-title">Q14 均值（按闲暇时间分组）</div>
+        <div class="chart-box h-200"><canvas id="chartQ14Time"></canvas></div>
+        <p class="text-sm text-muted mt-1">时间最少者 (&lt;0.5h) 的 Q14 均值反而不高于时间最多者</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FINDING 9 — 非商业化
+     ═══════════════════════════════════════════════════════════ -->
+<section id="f9">
+  <div class="wrap">
+    <div class="finding-hdr reveal">
+      <div class="finding-num">9</div>
+      <div>
+        <h2>同人售卖市场本质上非商业化</h2>
+        <p>约 <span class="inline-stat" id="f9NonProfit">—%</span> 的售卖者以非盈利方式运营</p>
+      </div>
+    </div>
+
+    <p class="text-sm mt-2 mb-3 reveal" style="max-width:none">我们问了有售卖经验的创作者（共 58 人）：你定价时的真实策略是什么？</p>
+
+    <div class="grid-2 reveal">
+      <div class="card">
+        <div class="card-title">定价策略分布</div>
+        <div class="chart-box h-260"><canvas id="chartF9Pricing"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">A 类制品的生产瓶颈</div>
+        <div class="chart-box h-260"><canvas id="chartF9Bottleneck"></canvas></div>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <strong>结论：</strong>市场并不服从芝加哥学派的利润最大化假设。大家做同人不是为了赚钱，而是为了分享热爱。而想做同人本的创作者面临的最大瓶颈，不是有没有灵感，而是能不能找到一起合作的人。
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FINDING 10 — 创作者韧性
+     ═══════════════════════════════════════════════════════════ -->
+<section id="f10">
+  <div class="wrap">
+    <div class="finding-hdr reveal">
+      <div class="finding-num">10</div>
+      <div>
+        <h2>创作者对数据低迷具有高韧性，但退出主因是外部约束</h2>
+        <p><span class="inline-stat" id="f10HighRes">—%</span> 表示几乎不受影响</p>
+      </div>
+    </div>
+
+    <p class="text-sm mt-2 mb-3 reveal" style="max-width:none">我们问了 117 位有创作经历的受访者两个问题：连续几次数据不好你会怎样？什么情况下你会断更/退圈？</p>
+
+    <div class="grid-2 reveal">
+      <div class="card">
+        <div class="card-title">数据低迷时的反应</div>
+        <div class="chart-box h-260"><canvas id="chartF10Resil"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">退出 / 断更的核心原因</div>
+        <div class="chart-box h-260"><canvas id="chartF10Exit"></canvas></div>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <strong>结论：</strong>同人创作者的发电动力来自内心热爱，不太受点赞数和销量的影响。但时间压力和有毒的圈内环境会把人赶走。想留住创作者，更重要的是维护健康的社群氛围以及尊重创作者的现实节奏。
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NULL RESULTS
+     ═══════════════════════════════════════════════════════════ -->
+<section id="null-results">
+  <div class="wrap">
+    <h2 class="reveal">不成立的假说</h2>
+    <p class="text-sm mt-1 mb-3 reveal" style="max-width:none">没有发现差异本身也是重要的发现。下面这些听起来很合理的猜想在数据中都站不住脚。列出它们是为了避免误读。</p>
+
+    <div class="card reveal" style="overflow-x:auto">
+      <table class="data-table">
+        <thead><tr><th>假说</th><th>检验</th><th>结果</th><th>判定</th></tr></thead>
+        <tbody>
+          <tr><td>收入能够直接判断预测制品偏好</td><td>Ordered Logit</td><td>p = 0.168</td><td class="text-red fw-600">不成立</td></tr>
+          <tr><td>年龄能够预测消费行为</td><td>所有模型</td><td>全部 p &gt; 0.20</td><td class="text-red fw-600">不成立</td></tr>
+          <tr><td>时间约束作为中介效应影响收入-制品关系</td><td>Bootstrap 中介</td><td>间接效应 p = 0.29</td><td class="text-red fw-600">不成立</td></tr>
+          <tr><td>性别调节作为中介效应影响收入-制品关系</td><td>交互项 OLS</td><td>p = 0.58</td><td class="text-red fw-600">不成立</td></tr>
+          <tr><td>问题12到问题16能够形成单一因子</td><td>Cronbach's α</td><td>α = 0.485</td><td class="text-red fw-600">不成立</td></tr>
+          <tr><td>问题12到问题16有清晰 EFA 因子结构</td><td>EFA (Oblimin)</td><td>KMO = 0.61, 累积方差 30%</td><td class="text-red fw-600">结构极弱</td></tr>
+          <tr><td>消费从众的创作者会表现得更脆弱</td><td>Kruskal-Wallis</td><td>p = 0.39</td><td class="text-red fw-600">不成立</td></tr>
+          <tr><td>创作者消费更偏 B 类</td><td>Mann-Whitney</td><td>p = 0.094</td><td style="color:var(--c-yellow);font-weight:600">边际</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CAUSAL CHAIN
+     ═══════════════════════════════════════════════════════════ -->
+<section id="causal-chain">
+  <div class="wrap">
+    <h2 class="reveal">高置信度发现的因果链图谱</h2>
+    <p class="text-muted mt-1 mb-3 reveal">箭头表示经多方法验证的稳健关系，× 表示被数据否定的假说</p>
+
+    <div class="flow-diagram reveal">
+
+      <!-- ── Lane 1: Income ──────────────────────────────── -->
+      <div class="flow-lane">
+        <div class="flow-lane-head" style="border-color:var(--c-accent)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          收入效应
+        </div>
+        <div class="flow-row">
+          <span class="flow-src">收入</span>
+          <span class="flow-conn flow-conn--pos"><span>+</span></span>
+          <span class="flow-dst">盲定意愿</span>
+          <span class="flow-ev">OR&nbsp;=&nbsp;1.455, p&nbsp;=&nbsp;0.002</span>
+        </div>
+        <div class="flow-row">
+          <span class="flow-src">收入</span>
+          <span class="flow-conn flow-conn--pos"><span>+</span></span>
+          <span class="flow-dst">A 类消费份额</span>
+          <span class="flow-ev">Log-Log β&nbsp;=&nbsp;1.06</span>
+        </div>
+        <div class="flow-row flow-row--sub">
+          <span class="flow-src">A 类购买</span>
+          <span class="flow-conn flow-conn--comp"><span>互补</span></span>
+          <span class="flow-dst">B 类配套消费</span>
+          <span class="flow-ev">Q13, d&nbsp;=&nbsp;+0.47</span>
+        </div>
+        <div class="flow-insight">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          A 类 ≈ 奢侈品（弹性 1.06）&nbsp;·&nbsp;B 类 ≈ 必需品（弹性 0.92）&nbsp;·&nbsp;非替代关系：仅 4.2% 砍 A 买 B
+        </div>
+      </div>
+
+      <!-- ── Lane 2: Gender ──────────────────────────────── -->
+      <div class="flow-lane">
+        <div class="flow-lane-head" style="border-color:var(--c-yellow)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          性别效应
+        </div>
+        <div class="flow-row">
+          <span class="flow-src">性别（女）</span>
+          <span class="flow-conn flow-conn--pos"><span>+</span></span>
+          <span class="flow-dst">B 类偏好</span>
+          <span class="flow-ev">OR&nbsp;=&nbsp;2.703, p&nbsp;=&nbsp;0.001</span>
+        </div>
+        <div class="flow-row flow-row--sub">
+          <span class="flow-src">性别（女）</span>
+          <span class="flow-conn flow-conn--pos"><span>+</span></span>
+          <span class="flow-dst">分散配置</span>
+          <span class="flow-ev">Q10: 38.5% AB都买 vs 男 21.3%</span>
+        </div>
+      </div>
+
+      <!-- ── Lane 3: Information ─────────────────────────── -->
+      <div class="flow-lane">
+        <div class="flow-lane-head" style="border-color:var(--c-green)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          信息效应
+        </div>
+        <div class="flow-row">
+          <span class="flow-src">信息完备</span>
+          <span class="flow-conn flow-conn--neg"><span>&minus;</span></span>
+          <span class="flow-dst">声誉依赖</span>
+          <span class="flow-ev">Q19: 82.7% 弃声誉选信息</span>
+        </div>
+        <div class="flow-insight">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          信息偏好与盲定意愿完全正交（r&nbsp;=&nbsp;0.02, p&nbsp;=&nbsp;0.79）——"信任"与"要信息"是两个独立维度
+        </div>
+      </div>
+
+      <!-- ── Lane 4: Negated ─────────────────────────────── -->
+      <div class="flow-lane flow-lane--muted">
+        <div class="flow-lane-head" style="border-color:var(--c-red)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+          否定假说
+        </div>
+        <div class="flow-row">
+          <span class="flow-src">社群热度</span>
+          <span class="flow-conn flow-conn--null"><span>&times;</span></span>
+          <span class="flow-dst flow-dst--struck">购买意愿</span>
+          <span class="flow-ev">Q15, d&nbsp;=&nbsp;&minus;0.52 从众被否定</span>
+        </div>
+        <div class="flow-row">
+          <span class="flow-src">时间稀缺</span>
+          <span class="flow-conn flow-conn--null"><span>&times;</span></span>
+          <span class="flow-dst flow-dst--struck">B 类替代</span>
+          <span class="flow-ev">Q14, d&nbsp;=&nbsp;&minus;0.25 替代被否定</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ROBUSTNESS
+     ═══════════════════════════════════════════════════════════ -->
+<section id="robust">
+  <div class="wrap">
+    <h2 class="reveal">稳健性检验</h2>
+    <p class="text-muted mt-1 mb-3 reveal">14 项核心指标中 13 项在加权后判定为"稳健"</p>
+
+    <div class="grid-2 reveal">
+      <div class="card">
+        <h3>加权敏感性分析</h3>
+        <p class="text-sm text-muted mt-1">按全国网民性别×年龄结构加权</p>
+        <table class="data-table mt-2">
+          <thead><tr><th>结论</th><th>未加权</th><th>加权</th><th>判定</th></tr></thead>
+          <tbody>
+            <tr><td>性别影响制品偏好</td><td>β=+0.67</td><td>β=+0.59</td><td class="text-green fw-600">稳健</td></tr>
+            <tr><td>收入影响盲定意愿</td><td>β=+0.11</td><td>β=+0.13</td><td class="text-green fw-600">稳健</td></tr>
+            <tr><td>买本的时候顺手买谷子</td><td>d=+0.45</td><td>d=+0.57</td><td class="text-green fw-600">稳健</td></tr>
+            <tr><td>从众效应被否定</td><td>d=−0.51</td><td>d=−0.56</td><td class="text-green fw-600">稳健</td></tr>
+            <tr><td>选信息方而非声誉方</td><td>76.5%</td><td>73.8%</td><td class="text-green fw-600">稳健</td></tr>
+            <tr><td>性别影响盲定意愿</td><td>p=0.17</td><td>p=0.03</td><td style="color:var(--c-yellow);font-weight:600">不稳定</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3>其他检验</h3>
+        <div class="mt-2">
+          <p class="text-sm"><strong>量表相关矩阵检验：</strong>以下 5 道消费心理打分题——①买不起本子时买点小周边支持老师、②买了本子顺手买配套谷子、③太忙所以更倾向买视觉周边、④圈内讨论度高会提升购买意愿、⑤老师口碑下滑会失去购买欲——使用两种不同的相关系数计算方法（Polychoric vs Pearson），最大差异仅 0.016，因子分析载荷最大差异 0.043。说明我们的计算方式没有系统性低估结果。</p>
+          <p class="text-sm mt-2"><strong>创作者自选择校正：</strong>对"宣发困难感知"和"A/B 偏好"的分析不受创作者身份的选择偏误影响（p=0.83 / p=0.29）。"被迫投入特殊工艺"的感知存在选择效应（p=0.009），但校正所用的工具变量较弱，该结论需保留态度。</p>
+          <p class="text-sm mt-2"><strong>统计检验力：</strong>主样本检验力充分（&gt;0.80），结论可靠。但售卖者子样本仅 58 人，只能检测中等以上的效应——该子样本中"不显著"的结果不代表"没有效应"，只是样本量不够大、看不清。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LIMITATIONS
+     ═══════════════════════════════════════════════════════════ -->
+<section id="limits">
+  <div class="wrap">
+    <h2 class="reveal">局限性</h2>
+    <div class="reveal mt-3" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem">
+      <div class="card">
+        <h3>支出代理变量</h3>
+        <p class="text-sm text-muted mt-1">未直接收集支出金额，收入弹性估计使用代理。Log-Log 的高 R² 部分源于收入中位数的机械传导。</p>
+      </div>
+      <div class="card">
+        <h3>假设情境</h3>
+        <p class="text-sm text-muted mt-1">Q10/Q11 为假设情境，受"意向-行为差距"影响。外部效度低于行为数据。</p>
+      </div>
+      <div class="card">
+        <h3>小子样本</h3>
+        <p class="text-sm text-muted mt-1">售卖者 n=58，仅能检测 d ≥ 0.40 的中等效应。"不显著"≠"无效应"。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     METHODOLOGY
+     ═══════════════════════════════════════════════════════════ -->
+<section id="methods" style="padding:3rem 0">
+  <div class="wrap">
+    <button class="expand-toggle" data-target="methods-detail">方法清单 <span class="arrow">▼</span></button>
+    <div class="expand-body" id="methods-detail">
+      <table class="data-table mt-2">
+        <thead><tr><th>分析方法</th><th>应用场景</th></tr></thead>
+        <tbody>
+          <tr><td>Ordered Logit + AME</td><td>A/B 偏好、盲定意愿</td></tr>
+          <tr><td>Multinomial Logit</td><td>收入冲击、预算收缩</td></tr>
+          <tr><td>分位数回归 (τ=0.10~0.90)</td><td>异质性效应</td></tr>
+          <tr><td>Log-Log 回归</td><td>收入弹性</td></tr>
+          <tr><td>Bootstrap 置信区间</td><td>小样本稳健性</td></tr>
+          <tr><td>Heckman 两阶段</td><td>创作者自选择校正</td></tr>
+          <tr><td>加权敏感性分析</td><td>样本代表性</td></tr>
+          <tr><td>Polychoric 相关 + EFA</td><td>量表结构检验</td></tr>
+          <tr><td>Bonferroni / FDR 校正</td><td>多重比较控制</td></tr>
+          <tr><td>高斯混合模型 (GMM)</td><td>潜在类别</td></tr>
+          <tr><td>K-Means + 轮廓系数</td><td>聚类探索</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>同人市场结构实证研究</strong></p>
+    <p class="mt-1">所有 p 值均为双侧检验 · 量表题参考值为中性点 5 · 数据来源于问卷调查</p>
+    <p class="mt-1">© 2026 同人市场结构实证研究团队 </p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

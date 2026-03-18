@@ -69,7 +69,7 @@ function hBar(id, labels, values, color, opts) {
         x: { grid:{display:false}, ticks:{callback:v=>Math.round(v)+"%"}, max: Math.ceil(Math.max(...values)*1.15) },
         y: { grid:{display:false} },
       },
-      plugins: { tooltip:{callbacks:{label:pctLabel}} },
+      plugins: { tooltip:{callbacks:{label:ctx=>ctx.parsed.x+"%"}} },
       ...opts,
     },
   });

@@ -80,7 +80,7 @@ section:nth-child(even) { background: var(--c-bg-alt); }
   display: flex; justify-content: center; gap: .75rem; flex-wrap: wrap;
   margin-top: 2.5rem; position: relative; z-index: 1;
 }
-.hero-btn {
+.hero a.hero-btn {
   display: inline-flex; align-items: center; gap: .5rem;
   padding: .65rem 1.4rem;
   font-size: .9rem; font-weight: 600;
@@ -91,18 +91,18 @@ section:nth-child(even) { background: var(--c-bg-alt); }
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.15);
 }
-.hero-btn:hover {
+.hero a.hero-btn:hover {
   transform: translateY(-1px);
   background: rgba(255,255,255,.14);
   color: #fff;
   box-shadow: 0 4px 16px rgba(0,0,0,.2);
 }
-.hero-btn--primary {
+.hero a.hero-btn.hero-btn--primary {
   background: var(--c-accent);
   border-color: var(--c-accent);
   color: #fff;
 }
-.hero-btn--primary:hover {
+.hero a.hero-btn.hero-btn--primary:hover {
   background: #1d4ed8;
   border-color: #1d4ed8;
   color: #fff;
